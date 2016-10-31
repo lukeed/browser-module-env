@@ -12,7 +12,7 @@ const tar = 'docs';
 const bun = 'docs/bundle.js';
 const src = ['docs/*.js', `!${bun}`];
 const dir = join(__dirname, 'assets');
-const obj = {entries: 'docs/demo.js'};
+const obj = {entries: 'docs/app.js'};
 
 if (process.env.BABEL) {
 	obj.transform = require('babelify').configure({presets: 'es2015'});
