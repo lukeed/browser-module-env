@@ -6,7 +6,7 @@
   "repository": "lukeed/browser-module-env",
   "license": "MIT",
   "bin": {
-    "fly": "node_modules/.bin/fly"
+    "fly": "cli.js"
   },
   "files": [
     "assets",
