@@ -1,0 +1,171 @@
+/**
+ * Base Demo Stylesheet
+ */
+
+@import 'md-colors'
+
+$base-unit: 8px
+$banner-height: 40 * $base-unit
+$main-maxwidth: 100 * $base-unit
+
+$white : #FFFFFF
+$black : #000000
+$gray : md-color('grey', '500')
+$blue : md-color('light-blue', '600')
+$yellow : md-color('yellow', '600')
+$orange : md-color('deep-orange', '400')
+
+body
+	margin: 0
+	padding: 0
+	font-size: 14px
+	min-height: 100%
+	color: rgba($black, 0.87)
+	font-family: 'Roboto', 'Noto', sans-serif
+	-webkit-tap-highlight-color: transparent
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	-webkit-text-size-adjust: 100%
+	-webkit-touch-callout: none
+	-ms-text-size-adjust: 100%
+	background: md-color('grey', '100')
+	overflow-x: hidden
+
+a
+	color: inherit
+	padding: 0 2px
+	outline: none
+	text-decoration: none
+	border-bottom: 2px solid $orange
+	transition: all 0.15s cubic-bezier(0.46, 0.01, 0.14, 1.35)
+	&:hover
+		color: $white
+		background: $orange
+
+span.sep
+	margin: 0
+	color: inherit
+	margin-left: -2px
+	display: inline-block
+	transform: scale(0.875)
+
+small
+	font-size: 65%
+	opacity: 0.65
+	display: block
+	line-height: 1.4
+
+header
+	position: fixed
+	background: $blue url(bg.jpg) no-repeat right
+	background-size: cover
+	text-align: center
+	height: $banner-height
+	width: 100%
+	border-bottom: 6px solid $yellow
+
+	h1
+		line-height: 60px
+		font-size: 32px
+		padding: 0 10px
+		padding-top: $banner-height/4
+		margin: 0 auto
+		color: $white
+		width: 100%
+
+	a,
+	span.sep
+		color: $white
+		opacity: 0.7
+		text-decoration: none
+
+	a,
+	a:hover
+		color: inherit
+		background: none
+		border: none
+
+	small
+		padding-top: $base-unit
+		font-weight: normal
+
+main
+	position: relative
+	top: $banner-height * 0.8
+	padding-bottom: $banner-height * 0.2
+	z-index: 1
+
+	> section
+		width: 80%
+		min-width: 300px
+		max-width: $main-maxwidth
+		overflow: hidden
+		background: $white
+		padding: 2*$base-unit 4*$base-unit
+		margin: 0 auto 2*$base-unit
+		box-shadow: 0 2px 2px 0 rgba($black, 0.14), 0 1px 5px 0 rgba($black, 0.12), 0 3px 1px -2px rgba($black, 0.2)
+
+	h2
+		font-size: 20px
+		small
+			font-style: italic
+
+code
+	line-height: 1.45
+	padding: 1px $base-unit/2
+	font-family: "Roboto Mono", monospace
+
+pre,
+code
+	border-radius: $base-unit/2
+	background-color: rgb(247, 247, 247)
+
+pre
+	font-size: 87.5%
+	padding: 2 * $base-unit
+	overflow: auto
+	code
+		padding: 0
+		line-height: 1.6
+
+.half
+	width: 50%
+	float: left
+	display: inline-block
+
+	h3
+		margin-top: 4px
+		margin-bottom: 6px
+
+	h4
+		margin-top: 0
+		margin-bottom: 4px
+
+	p
+		margin-top: 0
+		line-height: 1.6
+		margin-bottom: 2 * $base-unit
+		border-left: 0.25*$base-unit solid $blue
+		padding-left: 1.75 * $base-unit
+		margin-left: 0.25 * $base-unit
+
+footer
+	color: $gray
+	opacity: 0.75
+	font-size: 85%
+	position: absolute
+	text-align: center
+	text-transform: uppercase
+	font-weight: bold
+	bottom: 3 * $base-unit
+	width: 100%
+
+@media screen and (max-width: 769px)
+	.half
+		float: none
+		width: 100%
+
+@media screen and (max-width: 481px)
+	header
+		height: 0.875 * $banner-height
+		background-position: left
