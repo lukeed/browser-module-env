@@ -46,7 +46,20 @@ After installing:
 
 ## Commands
 
-WIP
+#### setup
+Copies static demo assets (`bg.jpg`, `chart.css`, `demo.css`, `demo.js`) to your `docs` directory.
+
+#### build
+Creates a [browserify](http://browserify.org/) bundle, using `docs/app.js` as its entry file. Output is sent to `docs/bundle.js`.
+
+#### release
+Runs [`build`](#build) then minifies `docs/bundle.js` using [Uglify JS](http://lisperator.net/uglifyjs/).
+
+#### serve
+Starts a local server on port `3000` using [BrowserSync](https://www.browsersync.io/).
+
+#### watch
+Runs [`serve`](#serve) but will auto-compile & auto-reload the server after any file changes within `docs` directory.
 
 ## License
 
