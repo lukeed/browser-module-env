@@ -23,7 +23,7 @@ exports.setup = function * () {
 };
 
 exports.build = function * (o) {
-	yield this.source(o.src || src).xo().browserify(obj).concat('bundle.js').target(tar);
+	yield this.source(o.src || src).xo().browserify(obj).concat1('bundle.js').target(tar);
 	reload();
 };
 
@@ -49,7 +49,6 @@ exports.watch = function * () {
 };
 
 exports.refresh = function * () {
-	yield Promise.resolve();
 	reload();
 };
 
@@ -59,5 +58,4 @@ exports.serve = function * () {
 		server: tar,
 		reloadDelay: 300
 	});
-	yield this.$.log('Started local server');
 };
