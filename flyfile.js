@@ -9,10 +9,10 @@ let isServer = 0;
 const reload = () => isWatch && isServer && bs.reload();
 
 const tar = 'docs';
-const bun = 'docs/bundle.js';
-const src = ['docs/*.js', `!${bun}`];
-const dir = join(__dirname, 'assets');
+const out = 'docs/bundle.js';
 const obj = {entries: 'docs/app.js'};
+const dir = join(__dirname, 'assets');
+const src = ['docs/*.js', '!docs/{bundle,demo}.js'];
 
 if (process.env.BABEL) {
 	obj.transform = require('babelify').configure({presets: 'es2015'});
@@ -23,13 +23,13 @@ exports.setup = function * () {
 };
 
 exports.build = function * (o) {
-	yield this.source(o.src || src).xo().browserify(obj).concat1('bundle.js').target(tar);
+	yield this.source(o.src || src).xo().browserify(obj).concat('bundle.js').target(tar);
 	reload();
 };
 
 exports.release = function * () {
 	yield this.start('build');
-	yield this.source(bun).uglify({
+	yield this.source(out).uglify({
 		compress: {
 			conditionals: 1,
 			drop_console: 1,
