@@ -23,7 +23,7 @@ exports.setup = function * () {
 };
 
 exports.build = function * (o) {
-	yield this.source(o.src || src).xo().browserify(obj).concat1('bundle.js').target(tar);
+	yield this.source(o.src || src).xo().browserify(obj).concat('bundle.js').target(tar);
 	reload();
 };
 
