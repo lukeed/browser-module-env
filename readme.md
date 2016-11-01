@@ -44,7 +44,17 @@ After installing:
   }
   ```
 
+4. Copy static assets to your `docs` directory.
+
+  ```
+  npm run setup
+  ```
+
+  > If this works, you're ready to roll! :tada:
+
 ## Commands
+
+Each command takes the form: `npm run {command}`.
 
 #### setup
 Copies static demo assets (`bg.jpg`, `chart.css`, `demo.css`, `demo.js`) to your `docs` directory.
