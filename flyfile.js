@@ -2,34 +2,46 @@
 
 const join = require('path').join;
 const bs = require('browser-sync');
+const rollup = require('rollup');
 
 let isWatch = 0;
 let isServer = 0;
 
 const reload = () => isWatch && isServer && bs.reload();
 
-const tar = 'docs';
-const out = 'docs/bundle.js';
+const doc = 'docs';
+const tar = 'build';
 const obj = {entries: 'docs/app.js'};
 const dir = join(__dirname, 'assets');
-const src = ['docs/*.js', '!docs/{bundle,demo}.js'];
+
+const OUTNAME = process.env.OUTNAME || 'MyModule';
+const OUTFILE = process.env.OUTFILE || 'built.js';
 
 if (process.env.BABEL) {
 	obj.transform = require('babelify').configure({presets: 'es2015'});
 }
 
 exports.setup = function * () {
-	yield this.source(`${dir}/*.*`).target(tar);
+	yield this.source(`${dir}/*.*`).target(doc);
 };
 
-exports.build = function * (o) {
-	yield this.source(o.src || src).xo().browserify(obj).concat('bundle.js').target(tar);
+exports.docs = function * (o) {
+	yield this.source(o.src || 'docs/app.js').xo().browserify(obj).concat('bundle.js').target(doc);
 	reload();
 };
 
+exports.build = function * () {
+	yield this.clear(tar);
+	const bun = yield rollup.rollup({entry: 'lib/index.js'});
+	yield bun.write({
+		format: 'umd',
+		moduleName: OUTNAME,
+		dest: `${tar}/${OUTFILE}`
+	});
+};
+
 exports.release = function * () {
-	yield this.start('build');
-	yield this.source(out).uglify({
+	const ops = {
 		compress: {
 			conditionals: 1,
 			drop_console: 1,
@@ -38,12 +50,15 @@ exports.release = function * () {
 			booleans: 1,
 			loops: 1
 		}
-	}).target(tar);
+	};
+	yield this.serial(['build', 'docs']);
+	yield this.source('docs/bundle.js').uglify(ops).target(doc);
+	yield this.source(`${tar}/*.js`).uglify(ops).concat(OUTFILE.replace('.js', '.min.js')).target(tar);
 };
 
 exports.watch = function * () {
 	isWatch = 1;
-	yield this.watch(src, 'build');
+	yield this.watch('docs/app.js', 'docs');
 	yield this.watch('docs/*.{html,css}', 'refresh');
 	yield this.start('serve');
 };
@@ -55,7 +70,7 @@ exports.refresh = function * () {
 exports.serve = function * () {
 	isServer = 1;
 	bs({
-		server: tar,
+		server: doc,
 		reloadDelay: 300
 	});
 };

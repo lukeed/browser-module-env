@@ -23,7 +23,8 @@
     "fly-browserify": "lukeed/fly-browserify",
     "fly-concat": "^1.0.0",
     "fly-uglify": "flyjs/fly-uglify",
-    "fly-xo": "^2.0.0"
+    "fly-xo": "^2.0.0",
+    "rollup": "^0.36.3"
   },
   "devDependencies": {
     "fly-autoprefixer": "^1.0.0",
