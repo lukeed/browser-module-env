@@ -11,14 +11,17 @@ const reload = () => isWatch && isServer && bs.reload();
 
 const doc = 'docs';
 const tar = 'build';
-const obj = {entries: 'docs/app.js'};
 const dir = join(__dirname, 'assets');
+const obj = {
+	entries: 'docs/app.js',
+	transform: ['rollupify']
+};
 
 const OUTNAME = process.env.OUTNAME || 'MyModule';
 const OUTFILE = process.env.OUTFILE || 'built.js';
 
 if (process.env.BABEL) {
-	obj.transform = require('babelify').configure({presets: 'es2015'});
+	obj.transform.push(require('babelify').configure({presets: 'es2015'}));
 }
 
 exports.setup = function * () {
