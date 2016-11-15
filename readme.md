@@ -39,18 +39,11 @@ After installing:
 
   > For example, `npm run watch`.
 
-3. Configure [Fly](https://github.com/flyjs/fly) so that it loads this environment & [Browserify](https://github.com/substack/browserify-handbook#browserifytransform-field) so that it transforms with [Rollup](http://rollupjs.org/?version=0.36.3&shareable=JTdCJTIyb3B0aW9ucyUyMiUzQSU3QiUyMmZvcm1hdCUyMiUzQSUyMmNqcyUyMiUyQyUyMm1vZHVsZU5hbWUlMjIlM0ElMjJteUJ1bmRsZSUyMiUyQyUyMmdsb2JhbHMlMjIlM0ElN0IlN0QlN0QlMkMlMjJtb2R1bGVzJTIyJTNBJTVCJTdCJTIybmFtZSUyMiUzQSUyMm1haW4uanMlMjIlMkMlMjJjb2RlJTIyJTNBJTIyaW1wb3J0JTIwJTdCJTIwY3ViZSUyMCU3RCUyMGZyb20lMjAnLiUyRm1hdGhzLmpzJyUzQiU1Q25jb25zb2xlLmxvZyglMjBjdWJlKCUyMDUlMjApJTIwKSUzQiUyMCUyRiUyRiUyMDEyNSUyMiU3RCUyQyU3QiUyMm5hbWUlMjIlM0ElMjJtYXRocy5qcyUyMiUyQyUyMmNvZGUlMjIlM0ElMjIlMkYlMkYlMjBUaGlzJTIwZnVuY3Rpb24lMjBpc24ndCUyMHVzZWQlMjBhbnl3aGVyZSUyQyUyMHNvJTVDbiUyRiUyRiUyMFJvbGx1cCUyMGV4Y2x1ZGVzJTIwaXQlMjBmcm9tJTIwdGhlJTIwYnVuZGxlLi4uJTVDbmV4cG9ydCUyMGZ1bmN0aW9uJTIwc3F1YXJlJTIwKCUyMHglMjApJTIwJTdCJTVDbiU1Q3RyZXR1cm4lMjB4JTIwKiUyMHglM0IlNUNuJTdEJTVDbiU1Q24lMkYlMkYlMjBUaGlzJTIwZnVuY3Rpb24lMjBnZXRzJTIwaW5jbHVkZWQlNUNuZXhwb3J0JTIwZnVuY3Rpb24lMjBjdWJlJTIwKCUyMHglMjApJTIwJTdCJTVDbiU1Q3QlMkYlMkYlMjByZXdyaXRlJTIwdGhpcyUyMGFzJTIwJTYwc3F1YXJlKCUyMHglMjApJTIwKiUyMHglNjAlNUNuJTVDdCUyRiUyRiUyMGFuZCUyMHNlZSUyMHdoYXQlMjBoYXBwZW5zISU1Q24lNUN0cmV0dXJuJTIweCUyMColMjB4JTIwKiUyMHglM0IlNUNuJTdEJTIyJTdEJTVEJTdE).
-
-  Add this to your `package.json` file:
+3. Configure [Fly](https://github.com/flyjs/fly) so that it loads this environment. Add this to your `package.json` file:
 
   ```json
   "fly": {
     "pkg": "node_modules/browser-module-env"
-  },
-  "browserify": {
-    "transform": [
-      "rollupify"
-    ]
   }
   ```
 
