@@ -26,7 +26,7 @@ After installing:
 
   ```json
   "scripts": {
-    "postinstall": "fly setup",
+    "setup": "fly setup",
     "build": "fly build",
     "docs": "fly docs",
     "release": "fly release",
@@ -50,7 +50,7 @@ After installing:
 4. Copy static assets to your `docs` directory.
 
   ```
-  npm run postinstall
+  npm run setup
   ```
 
   > If this works, you're ready to roll! :tada:
@@ -59,10 +59,8 @@ After installing:
 
 Each command takes the form: `npm run {command}`.
 
-#### postinstall
+#### setup
 Copies static demo assets (`bg.jpg`, `chart.css`, `demo.css`, `demo.js`) to your `docs` directory.
-
-> **Note:** Once configured, this is will automatically run after future `npm install` commands.
 
 #### build
 Builds the [UMD](http://davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/#umd-universal-module-definition) module. Output is sent to `build`.
