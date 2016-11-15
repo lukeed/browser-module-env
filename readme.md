@@ -15,8 +15,8 @@ After installing:
 1. Create a `flyfile.js` in your root directory with the following:
 
   ```js
-  process.env.OUTNAME = 'MyModule'; # module's name
-  process.env.OUTFILE = 'my-module.js'; # built file name
+  process.env.OUTNAME = 'MyModule'; // module's name
+  process.env.OUTFILE = 'my-module.js'; // built file name
   module.exports = require('browser-module-env/flyfile.js');
   ```
 
